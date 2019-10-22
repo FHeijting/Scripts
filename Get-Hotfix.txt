@@ -1,0 +1,34 @@
+Get-Hotfix -cn EXCPWA01.FVLPROD.FVL | sort InstalledOn -des  | select HotfixID, Description, InstalledOn -first 20
+
+PS C:\Users\BPATFR> Get-Hotfix -cn PWSWI001.FVLPROD.FVL | sort InstalledOn -des  | select HotfixID, Description, InstalledOn -first 25
+
+HotfixID  Description     InstalledOn          
+--------  -----------     -----------          
+KB4034662 Security Update 7/10/2018 12:00:00 AM
+KB4034658 Security Update 8/10/2017 12:00:00 AM
+KB4035631 Update          8/10/2017 12:00:00 AM
+KB4023834 Update          7/25/2017 12:00:00 AM
+KB3186603 Update          7/25/2017 12:00:00 AM
+KB3186602 Update          7/25/2017 12:00:00 AM
+KB3186601 Update          7/25/2017 12:00:00 AM
+KB3186596 Update          7/25/2017 12:00:00 AM
+KB3186595 Update          7/25/2017 12:00:00 AM
+KB3186594 Update          7/25/2017 12:00:00 AM
+KB3186592 Update          7/25/2017 12:00:00 AM
+KB3186591 Update          7/25/2017 12:00:00 AM
+KB3186590 Update          7/25/2017 12:00:00 AM
+KB3186589 Update          7/25/2017 12:00:00 AM
+KB3186587 Update          7/25/2017 12:00:00 AM
+KB3186586 Update          7/25/2017 12:00:00 AM
+KB3186578 Update          7/25/2017 12:00:00 AM
+KB3186577 Update          7/25/2017 12:00:00 AM
+KB3186576 Update          7/25/2017 12:00:00 AM
+KB3186575 Update          7/25/2017 12:00:00 AM
+KB3186574 Update          7/25/2017 12:00:00 AM
+KB3186573 Update          7/25/2017 12:00:00 AM
+KB3186572 Update          7/25/2017 12:00:00 AM
+KB3186571 Update          7/25/2017 12:00:00 AM
+KB3186570 Update          7/25/2017 12:00:00 AM
+
+
+

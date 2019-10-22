@@ -1,0 +1,6 @@
+VLWGP002.dmzprod.fvl
+VL-DMZ-IIS-00.dmzprod.fvl
+DMZ-P-IIS-03.dmzprod.fvl
+DMZ-MFA-03.dmzprod.fvl
+VLWGP001.dmzprod.fvl
+STRPWI01.dmzprod.fvl

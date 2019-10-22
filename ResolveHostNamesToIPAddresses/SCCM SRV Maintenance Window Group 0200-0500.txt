@@ -1,0 +1,3 @@
+﻿SCCM SRV Maintenance Window Group 0200-0500
+F-FVL-S-SUM SRV MW Sat 1
+F-FVL-S-SUM SRV MW Sun 1

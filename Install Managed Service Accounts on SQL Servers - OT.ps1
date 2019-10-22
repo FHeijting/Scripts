@@ -1,0 +1,49 @@
+# Install Managed Service Accounts on SQL Servers - OT.ps1
+# Run on the local machine!
+# Install Active Directory module for Windows Powershell 
+# Add Roles and Features Wizard
+# RSAT Remote Server Administrator Tools
+# AD DS and AD LDS Toools
+Enable-WindowsOptionalFeature -FeatureName ActiveDirectory-Powershell -Online -All
+# Addd machine to AD group " SQLServers! "
+# Add the SQL server in SQL Servers Security group (to install gMSA accounts)
+# Get-ADComputer -Identity $ServerName | Add-ADPrincipalGroupMembership -MemberOf SQLServers
+Import-Module ActiveDirectory
+$Computername = (Get-WMIObject Win32_ComputerSystem | Select-Object -ExpandProperty name)
+$_Comp = Get-ADComputer -Identity $Computername
+$_Comp
+ADD-ADGroupMember -Identity "CN=SQLServers,OU=2016,OU=FvLServers,DC=ot,DC=otam,DC=fvl" –Members $_Comp
+
+
+
+
+Restart-Computer -ComputerName $Computername
+# ====== 2e Part
+# Install Managed Service Accounts on SQL Servers.ps1
+# Rebooted ! 
+# Run Script as below!
+# Delete SPN!
+# SetSPN -d "MSSQLSvc/SQLTWA08.ot.otam.fvl:1433" "OT\SASQLTWA08SQLU01"
+# Create / SETSPN! 
+# SetSPN -s "MSSQLSvc/regtwa27.ot.otam.fvl:1433" "ot\gMSAsqluservice$" 
+$Computername = (Get-WMIObject Win32_ComputerSystem | Select-Object -ExpandProperty name)
+$Computername
+$Domain = (Get-WMIObject Win32_ComputerSystem | Select-Object -ExpandProperty Domain)
+$Domain
+Import-Module ActiveDirectory
+Install-ADServiceAccount -Identity gMSAsqluservice$ -Auth Negotiate 
+Install-ADServiceAccount -Identity gMSAagntservice$
+Install-ADServiceAccount -Identity gMSAssisservice$
+Install-ADServiceAccount -Identity gMSAssasservice$
+Install-ADServiceAccount -Identity gMSAssrsservice$
+Test-ADServiceAccount -Identity gMSAsqluservice$
+Test-ADServiceAccount -Identity gMSAagntservice$
+Test-ADServiceAccount -Identity gMSAssisservice$
+Test-ADServiceAccount -Identity gMSAssasservice$
+Test-ADServiceAccount -Identity gMSAssrsservice$
+setspn -S MSSQLSvc/$Computername.$Domain:1433 $Domain\gMSAsqluservice$
+# ======
+setspn -L gMSAsqluservice$
+Test-NetConnection -ComputerName $Computername.$Domain -port  1433
+# setspn -L SA"$Computername"SQLU01
+SETSPN -L SAPWSQL310SQLU01$

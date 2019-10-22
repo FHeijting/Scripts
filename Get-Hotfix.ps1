@@ -1,0 +1,1 @@
+﻿Get-Hotfix -cn localhost | sort InstalledOn -des  | select HotfixID, Description, InstalledOn -first 20

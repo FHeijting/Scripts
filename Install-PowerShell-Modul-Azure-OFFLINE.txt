@@ -1,0 +1,26 @@
+﻿Install-PowerShell-Modul-Azure-OFFLINE
+
+\\OA-FS-00\Temp\ADM-PFRA\PowerShell-Modul-Azure
+
+
+Azure Module
+Copy \\OA-FS-00\Temp\ADM-PFRA\PowerShell-Modul-Azure\Azure\*.*   \\<ServerName>\c$\Program Files\WindowsPowerShell\Modules\*.*
+
+
+
+
+
+
+Update Nuget naar v  2.8.5.208
+
+
+$env:LOCALAPPDATA\PackageManagement\ProviderAssemblies\\\<ProviderName\>\\\<ProviderVersion\> or
+$env:ProgramFiles\PackageManagement\ReferenceAssemblies\\\<ProviderName\>\\\<ProviderVersion\>.
+ 
+
+* ProviderAssemblies
+Copy \\OA-FS-00\Temp\ADM-PFRA\PowerShell-Modul-Azure\NuGet\ProviderAssemblies\*.* \\<ServerName>\c$\Program Files\PackageManagement\ProviderAssemblies\*.*
+or
+* Reference Assemblies
+Copy \\OA-FS-00\Temp\ADM-PFRA\PowerShell-Modul-Azure\NuGet\ProviderAssemblies\*.*  \\<ServerName>\c$\Program Files\Reference Assemblies\*.*
+
